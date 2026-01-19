@@ -1,0 +1,9 @@
+# Generated model artifacts
+trained_model/
+model_training/
+
+
+__pycache__/
+*.pyc
+.env
+.vscode/
