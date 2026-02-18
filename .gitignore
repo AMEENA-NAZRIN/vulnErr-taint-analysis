@@ -1,7 +1,6 @@
-# Generated model artifacts
 trained_model/
 model_training/
-
+venv/
 
 __pycache__/
 *.pyc
