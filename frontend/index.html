@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> VulnERR - Taint Analysis System</title>
+  <title>VulnERR Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Taint Analysis</h1>
-  <input type="file" id="file">
-  <button onclick="analyze()">Analyze</button>
-  <pre id="result"></pre>
 
-  <script src="script.js"></script>
+<div class="dashboard-wrapper">
+
+  <div class="navbar">
+    <div class="nav-actions">
+      <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="dashboard-container">
+
+    <div class="upload-card">
+      <h2>Upload File</h2>
+
+      <input type="file" id="file" onchange="previewFile()">
+
+      <div class="upload-buttons">
+        <button onclick="analyze()">Analyze</button>
+        <button onclick="downloadReport()">Download Report</button>
+      </div>
+    </div>
+
+    <div class="preview-card">
+      <h2>File Preview</h2>
+      <pre id="filePreview">No file selected.</pre>
+    </div>
+
+    <div class="results-section">
+      <div class="card">
+        <h2>Analysis Result</h2>
+        <pre id="result"></pre>
+      </div>
+
+      <div class="card">
+        <h2>AI Suggestions</h2>
+        <pre id="suggestions"></pre>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
