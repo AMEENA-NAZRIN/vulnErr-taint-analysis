@@ -22,31 +22,22 @@ def generate_pdf(filename, result, suggestions):
         doc = SimpleDocTemplate(pdf_path)
         elements = []
 
-        # TITLE
         elements.append(Paragraph("VulnERR Security Report", title_style))
         elements.append(Spacer(1, 20))
 
-        # FILE NAME
         elements.append(Paragraph(f"<b>File Name:</b> {filename}", normal_style))
         elements.append(Spacer(1, 10))
-
-        # STATUS
         elements.append(Paragraph("<b>Analysis Result:</b>", heading_style))
         elements.append(Paragraph(f"Status: {result.get('status','')}", normal_style))
         elements.append(Paragraph(f"Severity: {result.get('severity','')}", normal_style))
         elements.append(Paragraph(f"Message: {result.get('message','')}", normal_style))
         elements.append(Spacer(1, 20))
 
-        # SUGGESTIONS
         if suggestions:
             elements.append(Paragraph("<b>AI Suggestions:</b>", heading_style))
             elements.append(Spacer(1, 10))
-
-            # 🔥 Strip HTML safely
             soup = BeautifulSoup(suggestions, "html.parser")
             clean_text = soup.get_text()
-
-            # Split into lines and add cleanly
             for line in clean_text.split("\n"):
                 if line.strip():
                     elements.append(Paragraph(line.strip(), normal_style))
